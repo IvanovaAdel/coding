@@ -2,6 +2,7 @@ def efszdf(number):
     number = 10.0
     number1 = int(number)
     num = 0
+    square = []
     for num in range(number1):
         num + 1
         num2 =(num*num)
@@ -16,11 +17,17 @@ def efszdf(number):
             continue
         elif num == 9:
             break
+    
+        square.append(num2)
+    print(square)
+    return square
         
-        variable = "выа"
-        if variable == "":
-            raise ValueError("Пустая строка")
-        
+    variable = "Не пусто"
+    if variable == "":
+        raise ValueError("Пустая строка")
+    print(square)
+
     
 efszdf(number = 10.0)
-efszdf(number = 18.0)
+square1 = efszdf(number = 10.0)
+print(square1)
