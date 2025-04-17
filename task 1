@@ -1,0 +1,4 @@
+def processing(name, work, greades):
+    pass
+processing(name = "Adelina", work = True, greades = 5,5)
+    
