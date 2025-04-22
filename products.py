@@ -8,10 +8,26 @@ def price_less_than_eighty():
             print(product[1])
         else:
             continue
-print(price_less_than_eighty())
+price_less_than_eighty()
 
 def total_amount_of_item(): 
     for product in products: 
         full_price = int(product[1]) * int(product[2])
         print(f"Цена товара {product[0]} - всего {full_price}")
-print(total_amount_of_item())
+total_amount_of_item()
+
+price = []
+def item_with_the_highest_amount():
+    global price
+    for product in products: 
+        full_price = int(product[1]) * int(product[2])
+        price.append(full_price)
+    price.sort()
+    price.reverse()
+    print(price)
+    for product in products:
+        if (int(product[1]) * int(product[2])) == price[0]:
+            name = product[0]
+            if (int(product[1]) * int(product[2])) == price[0]:
+                print(f"Самая большая цена у товара {name} - {price[0]}")
+item_with_the_highest_amount()
