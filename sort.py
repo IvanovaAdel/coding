@@ -68,8 +68,24 @@ def selection_sort(arr):
         sorted_arr[i], sorted_arr[min_idx] = sorted_arr[min_idx], sorted_arr[i]
     return sorted_arr
 
-numbers = [64, 25, 12, 22, 11]
 
-print("До сортировки:", numbers)
-sorted_numbers = selection_sort(numbers)
+
+print("До сортировки:", my_list)
+sorted_numbers = selection_sort(my_list)
+print("После сортировки:", sorted_numbers)
+
+
+
+def bubble_sort(arr):
+    sorted_arr = arr[:]
+    n = len(sorted_arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if sorted_arr[j] > sorted_arr[j+1]:
+                sorted_arr[j], sorted_arr[j+1] = sorted_arr[j+1], sorted_arr[j]
+    return sorted_arr
+
+
+print("До сортировки:", my_list)
+sorted_numbers = bubble_sort(my_list)
 print("После сортировки:", sorted_numbers)
