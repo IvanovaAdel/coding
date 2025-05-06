@@ -1,4 +1,4 @@
-def insertion_sort(arr, left, right):
+def time_sort(arr, left, right):
     for i in range(left + 1, right + 1):
         key = arr[i]
         j = i - 1
@@ -55,3 +55,21 @@ my_list = [56, 64, 32, 45, 12, 2, 5, 65]
 print("Список до сортировки:", my_list)
 tim_sort(my_list)
 print("Список после сортировки:", my_list)
+
+
+def selection_sort(arr):
+    sorted_arr = arr[:]
+    n = len(sorted_arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if sorted_arr[j] < sorted_arr[min_idx]:
+                min_idx = j
+        sorted_arr[i], sorted_arr[min_idx] = sorted_arr[min_idx], sorted_arr[i]
+    return sorted_arr
+
+numbers = [64, 25, 12, 22, 11]
+
+print("До сортировки:", numbers)
+sorted_numbers = selection_sort(numbers)
+print("После сортировки:", sorted_numbers)
