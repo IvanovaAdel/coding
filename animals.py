@@ -20,12 +20,21 @@ class Shelter:
         else:
             for animal in self.animals:
                 animal.display_info()
-
+    
+    def find_by_species(self, species_name):
+        found = False
+        for animal in self.animals:
+            if animal.species == species_name:
+                animal.display_info()
+                found = True
+        
+        if not found:
+            print(f"Нет животных вида '{species_name}'")
 shelter = Shelter()
 
-cat = Animal("grisha", "fsde", 1)
-cat2 = Animal("pasha", "fsde", 1)
-dog = Animal("Yura", "fsde", 4)
+cat = Animal("grisha", "Кот", 1)
+cat2 = Animal("pasha", "Кот", 1)
+dog = Animal("Yura", "Собака", 4)
 
 print(cat.name)
 print(cat.species)
@@ -39,3 +48,8 @@ shelter.add_animals(dog)
 shelter.show_animals()
 
 print(shelter.animals)
+print("Все кошки:")
+shelter.find_by_species("Кот")
+
+print("Все птицы:")
+shelter.find_by_species("Птица")
