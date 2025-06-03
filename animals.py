@@ -7,7 +7,10 @@ class Animal:
     def display_info(self):
         print(f'Имя: {self.name}, Вид:{self.species} , Возраст:{self.age} ')
         
-    
+class Shelter:
+    def __init__(self):
+        self.animals = []
+        
 cat = Animal("grisha", "fsde", 1)
 print(cat.name)
 print(cat.species)
