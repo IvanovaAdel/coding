@@ -13,10 +13,19 @@ class Shelter:
 
     def add_animals(self, animal):
         self.animals.append(animal)
+        
+    def show_animals(self):
+        if not self.animals:
+            print("Этот список пуст")
+        else:
+            for animal in self.animals:
+                animal.display_info()
 
 shelter = Shelter()
 
 cat = Animal("grisha", "fsde", 1)
+cat2 = Animal("pasha", "fsde", 1)
+dog = Animal("Yura", "fsde", 4)
 
 print(cat.name)
 print(cat.species)
@@ -24,4 +33,9 @@ print(cat.age)
 cat.display_info()
 
 shelter.add_animals(cat)
+shelter.add_animals(cat2)
+shelter.add_animals(dog)
+
+shelter.show_animals()
+
 print(shelter.animals)
