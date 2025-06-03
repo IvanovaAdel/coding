@@ -37,10 +37,17 @@ class Shelter:
             if animal.get_species() == species_name:
                 animal.display_info()
                 found = True
-        
         if not found:
             print(f"Нет животных вида '{species_name}'")
-        
+            
+            
+    def remove_animal_by_name(self, name):
+        for animal in self.animals[:]:
+            if animal.get_name() == name:
+                self.animals.remove(animal)
+                print(f"Животное {name} успешно удалено")
+            else:
+                print(f"Животное с именем '{name}' не найдено")
             
 
 
@@ -67,3 +74,5 @@ shelter.find_by_species("Кот")
 
 print("Все птицы:")
 shelter.find_by_species("Птица")
+shelter.remove_animal_by_name("grisha")
+print(shelter.animals)
