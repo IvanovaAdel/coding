@@ -9,6 +9,11 @@ class Student:
 class Group:
     def  __init__(self):
         self.students = []
-        
+    
+    def add_student(self, student):
+        self.students.append(student)
+        print(self.students)
+group = Group()
 stud1 = Student("Grisha", 1)
 stud1.display_info()
+group.add_student(stud1)
