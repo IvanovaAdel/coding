@@ -1,5 +1,4 @@
-class Student:
-    def __init__(self, name, student_id):
+def __init__(self, name, student_id):
         self.__name = name
         self.__student_id = student_id
         self.__grades = []
@@ -36,8 +35,19 @@ class Group:
         else:
             for student in self.students:
                 student.display_info()
+                
+    def find_by_name(self, name):
+        found = False
+        for student in self.students:
+            if name == student.get_name():
+                student.display_info()
+                found = True
+            if not found:
+                print("Студент не найден")
+            
 
 
+# Использование
 group = Group()
 stud1 = Student("Grisha", 1)
 stud2 = Student("Masha", 2)
@@ -56,3 +66,4 @@ group.show_students()
 
 print(f"Средний балл Grisha: {stud1.get_average()}")
 print(f"Средний балл Masha: {stud2.get_average()}")
+group.find_by_name("Grisha")
