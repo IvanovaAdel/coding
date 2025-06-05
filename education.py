@@ -6,5 +6,9 @@ class Student:
     def display_info(self):
         print(f"Имя: {self.name}, ID: {self.student_id}")
         
+class Group:
+    def  __init__(self):
+        self.students = []
+        
 stud1 = Student("Grisha", 1)
 stud1.display_info()
