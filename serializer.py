@@ -1,3 +1,5 @@
+import json
+import os
 class Book:
     def __init__(self, name, author, year):
         self.name = name
@@ -19,24 +21,28 @@ class Book:
         return cls(data["name"], data["author"], data["year"])
 
 class Library:
-    self.load()
-    def __init__(self):
-        self.books = [] 
+    
+    def __init__(self, filename="library.json"):
+        self.books = []
+        self.filename = filename  # Сохраняем имя файла как атрибут класса
+        self.load()
+
 
     def add_book(self, book):  
-        lib.save()
         self.books.append(book)
         print(f'Книга "{book.name}" добавлена в список')
+        self.save()
 
     def remove_book(self, book_name):
         for book in self.books:  
-            lib.save()
+            
             if book.name == book_name:
                 self.books.remove(book)
                 print(f'Книга "{book_name}" удалена из библиотеки.')
                 return
         print(f'Книга "{book_name}" не найдена.')
-
+        self.save()
+        
     def show_books(self):
         if not self.books:
             print("В библиотеке нет книг.")
@@ -47,10 +53,23 @@ class Library:
 
 
     def save(self):
-        pass
-    
+        data = [book.to_dict() for book in self.books]
+        try:
+            with open(self.filename, "w", encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+        except IOError as e:
+            print(f"Ошибка при сохранении файла: {e}")
+
     def load(self):
-        pass
+        if not os.path.exists(self.filename):
+            return  # Файл не существует, пропускаем загрузку
+            
+        try:
+            with open(self.filename, "r", encoding='utf-8') as f:
+                data = json.load(f)
+                self.books = [Book.from_dict(item) for item in data]
+        except (IOError, json.JSONDecodeError) as e:
+            print(f"Ошибка при загрузке файла: {e}")
 
         
 menu = """
@@ -74,7 +93,7 @@ while True:
         name = input("Введите название книги: ")
         author = input("Введите автора книги: ")
         year = input("Введите год издания: ")
-        lib.save()
+        self.save()
         try:
             year = int(year)
             lib.add_book(Book(name, author, year))
@@ -83,6 +102,6 @@ while True:
     if choise == '2':
         book_nam = input("Введите название книги")
         lib.remove_book(book_nam)
-        lib.save()
+        self.save()
     if choise == '3':
         lib.show_books()
