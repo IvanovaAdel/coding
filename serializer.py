@@ -33,12 +33,34 @@ class Library:
             book.get_info()
 
         
+menu = """
+Введите:
+1 - добавить книгу
+2 - удалить выбранную книгу
+3 - Показать список книг
+"""
 lib = Library()
 b1 = Book("fed","re",1999)
 b2 = Book("saz","re",1999)
 b3 = Book("fdrg","re",1999)
+b4 = Book("dsa", 'ds', 1111)
 lib.add_book(b1)
 lib.add_book(b2)
 lib.add_book(b3)
-lib.remove_book("fed")
 lib.show_books()
+while True:
+    choise = input(menu)
+    if choise == "1":
+        name = input("Введите название книги: ")
+        author = input("Введите автора книги: ")
+        year = input("Введите год издания: ")
+        try:
+            year = int(year)
+            lib.add_book(Book(name, author, year))
+        except ValueError:
+            print("Год должен быть числом!")
+    if choise == '2':
+        book_nam = input("Введите название книги")
+        lib.remove_book(book_nam)
+    if choise == '3':
+        lib.show_books()
