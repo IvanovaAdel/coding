@@ -7,17 +7,30 @@ class Book:
     def get_info(self):
         print(f'{self.name}, {self.author}, {self.year}')
 
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "author": self.author,
+            "year": self.year
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["name"], data["author"], data["year"])
 
 class Library:
+    self.load()
     def __init__(self):
         self.books = [] 
 
     def add_book(self, book):  
+        lib.save()
         self.books.append(book)
         print(f'Книга "{book.name}" добавлена в список')
 
     def remove_book(self, book_name):
         for book in self.books:  
+            lib.save()
             if book.name == book_name:
                 self.books.remove(book)
                 print(f'Книга "{book_name}" удалена из библиотеки.')
@@ -31,6 +44,13 @@ class Library:
         print("Список книг в библиотеке:")
         for book in self.books:
             book.get_info()
+
+
+    def save(self):
+        pass
+    
+    def load(self):
+        pass
 
         
 menu = """
@@ -54,6 +74,7 @@ while True:
         name = input("Введите название книги: ")
         author = input("Введите автора книги: ")
         year = input("Введите год издания: ")
+        lib.save()
         try:
             year = int(year)
             lib.add_book(Book(name, author, year))
@@ -62,5 +83,6 @@ while True:
     if choise == '2':
         book_nam = input("Введите название книги")
         lib.remove_book(book_nam)
+        lib.save()
     if choise == '3':
         lib.show_books()
